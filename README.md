@@ -210,6 +210,8 @@ WooCommerce > Status > Logs
 
 3. Import the provided backup file:
 
+[Download backup](https://drive.google.com/file/d/1yqIYzsfueyNc3Ca5D-sc-o6-MZmLjl5n/view?usp=drive_link)
+
 ```text
 All-in-One WP Migration > Import
 ```
@@ -223,6 +225,8 @@ Appearance > Themes > Eko Plastics
 ```
 
 6. Upload and activate the WooCommerce payment plugin archive:
+
+[Download archive](https://drive.google.com/file/d/1q9mc6CLsBEyehPXNMXwR8WAMY7FvdHwr/view?usp=sharing)
 
 ```text
 Plugins > Add New > Upload Plugin > woo-mono-int.zip
