@@ -1,0 +1,61 @@
+@use '../abstracts/variables' as *;
+
+.hero {
+  margin: 124px auto;
+
+  @media (max-width: $breakpoint-tablet) {
+    margin: 7px auto 92px;
+  }
+
+  &__content {
+    max-width: 837px;
+    margin: 0 auto 124px;
+    text-align: center;
+
+    @media (max-width: $breakpoint-tablet) {
+      margin: 0 auto 57px;
+    }
+  }
+
+  &__title {
+    font-weight: $font-weight-bold;
+    font-size: $font-size-h1;
+    line-height: 1.1;
+    letter-spacing: 0.01em;
+
+    @media (max-width: $breakpoint-mobile-xs) {
+      font-size: $font-size-mobile;
+    }
+  }
+
+  &__subtitle {
+    margin: 28px 0 24px;
+    font-size: $font-size-subtitle;
+    line-height: 1.5;
+    font-weight: $font-weight-regular;
+    color: $color-text-secondary;
+    letter-spacing: 0.02em;
+  }
+
+  &__media {
+    overflow: hidden;
+    border-radius: $radius-small;
+
+    @media (max-width: $breakpoint-tablet) and (min-width: $breakpoint-mobile-xs) {
+      margin-inline: -38px;
+    }
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: 640px;
+    object-fit: cover;
+
+    @media (max-width: $breakpoint-mobile-xs) {
+      height: auto;
+      aspect-ratio: 1280/640;
+    }
+  }
+}
+

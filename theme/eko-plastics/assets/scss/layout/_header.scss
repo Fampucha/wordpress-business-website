@@ -1,0 +1,130 @@
+@use '../abstracts/variables' as *;
+
+.site-header {
+  position: relative;
+  z-index: 3;
+
+
+  @media (max-width: $breakpoint-mobile) {
+    &:has(.menu-toggle[open]) {
+      .navigation-mobile {
+        transform: translateY(100%);
+      }
+    }
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    padding-block: 56px;
+    position: relative;
+    background-color: $color-background;
+    z-index: 3;
+  }
+
+  &__logo {
+    margin-right: auto;
+    color: $color-text-primary;
+    font-size: $font-size-medium;
+    font-weight: $font-weight-medium;
+    text-decoration: none;
+
+    @media (max-width: $breakpoint-mobile) {
+      padding-top: 9px;
+    }
+  }
+
+  .site-navigation {
+    &__list {
+      display: flex;
+      align-items: center;
+      gap: 50px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      a {
+        color: $color-text-primary;
+        font-size: $font-size-medium;
+        text-decoration: none;
+      }
+    }
+    @media (max-width: $breakpoint-mobile) {
+      display: none;
+    }
+  }
+}
+
+.menu-toggle {
+  display: none;
+  padding-right: 28px;
+
+  @media (max-width: $breakpoint-mobile-xs) {
+    padding-right: 0;
+  }
+
+  .menu-toggle__close {
+    display: none;
+  }
+  .menu-toggle__icon {
+    padding-block: 5px;
+  }
+
+  &[open] {
+    .menu-toggle__icon {
+      display: none;
+    }
+    .menu-toggle__close {
+      display: block;
+    }
+  }
+
+  &__summary {
+    display: block;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    display: block;
+  }
+}
+
+.navigation-mobile {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: $color-background;
+  z-index: 2;
+  padding-block: 26px 85px;
+  transition: transform $transition-default;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    height: 100%;
+    padding: 0;
+    list-style: none;
+    padding-inline: var(--container-padding);
+
+    li:not(:has(a.button)) {
+      width: 100%;
+      text-align: center;
+      padding-bottom: 9px;
+      border-bottom: 1px $color-divider solid;
+
+      a {
+        color: $color-text-primary;
+        font-size: $font-size-medium;
+        text-decoration: none;
+      }
+    }
+
+    a.button {
+      margin-top: 42px;
+      min-width: 206px;
+    }
+  }
+}

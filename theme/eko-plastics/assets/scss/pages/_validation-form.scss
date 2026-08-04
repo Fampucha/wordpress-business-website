@@ -1,0 +1,132 @@
+@use '../abstracts/variables' as *;
+
+.validation-form-page {
+  padding-block: 80px;
+
+  @media (max-width: $breakpoint-mobile) {
+    padding-block: 48px;
+  }
+
+  &__inner {
+    max-width: 640px;
+  }
+
+  &__heading {
+    margin-bottom: 32px;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: $font-size-h2;
+    line-height: 1.2;
+    font-weight: $font-weight-bold;
+  }
+
+  &__subtitle {
+    margin: 16px 0 0;
+    color: $color-text-secondary;
+    font-size: $font-size-small;
+    line-height: 1.5;
+  }
+
+  &__message {
+    margin-bottom: 24px;
+    padding: 14px 16px;
+    border: 1px solid $color-border-form;
+    border-radius: $radius-small;
+    font-size: $font-size-small;
+    line-height: 1.5;
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+  }
+
+  &__message--success {
+    border-color: #7fcf96;
+    background-color: #f0fff4;
+  }
+
+  &__message--error {
+    border-color: #e59a9a;
+    background-color: #fff5f5;
+  }
+}
+
+.validation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    label {
+      font-size: $font-size-small;
+      font-weight: $font-weight-medium;
+      line-height: 1.5;
+    }
+
+    input {
+      width: 100%;
+      min-height: 48px;
+      padding: 11px 16px;
+      border: 1px solid $color-border-form;
+      border-radius: $radius-small;
+      background-color: $color-background;
+      font: inherit;
+      font-size: $font-size-small;
+      line-height: 1.5;
+      transition:
+        border-color $transition-default,
+        box-shadow $transition-default;
+
+      &:focus {
+        border-color: $color-text-secondary;
+        outline: none;
+        box-shadow: 0 0 0 3px rgb(0 0 0 / 8%);
+      }
+
+      &::placeholder {
+        color: $color-text-secondary;
+      }
+    }
+  }
+
+  &__field--honeypot {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  &__submit {
+    width: 100%;
+    min-height: 52px;
+    padding: 14px 24px;
+    border-radius: $radius-small;
+    background-color: $color-button-background;
+    color: $color-button-text;
+    font-family: inherit;
+    font-size: $font-size-small;
+    line-height: 1;
+    border: 0;
+    cursor: pointer;
+    transition:
+      transform $transition-default,
+      background-color $transition-default;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-text-primary;
+      outline-offset: 3px;
+    }
+  }
+}

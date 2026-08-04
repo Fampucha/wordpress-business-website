@@ -1,0 +1,52 @@
+// Typography
+$font-family-primary: "Inter", sans-serif;
+
+$font-size-medium: 20px;
+$font-size-small: 16px;
+$font-size-h1: 64px;
+$font-size-h2: 40px;
+$font-size-subtitle: 24px;
+$font-size-mobile: 48px;
+
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Colors
+$color-background: #ffffff;
+$color-text-primary: #111111;
+$color-text-secondary: #828282;
+$color-text-links: #454545;
+$color-border-card: #E7E7E7;
+$color-divider: #E6E6E6;
+$color-border-form: #E0E0E0;
+$color-button-background: #000000;
+$color-button-text: #ffffff;
+
+// Container
+$container-max-width: 1280px;
+
+// Border radius
+$radius-small: 8px;
+$radius-large: 12px;
+
+// Shadows
+$shadow-card: -4px 8px 20px 0 rgba(0, 0, 0, 0.1);
+$shadow-card-hover: -6px 12px 28px 0 rgba(0, 0, 0, 0.14);
+$button-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+
+// Transitions
+$transition-default: 0.5s ease;
+
+// Breakpoints
+$breakpoint-tablet: 1024px;
+$breakpoint-mobile: 767px;
+$breakpoint-mobile-xs: 650px;
+
+:root {
+	--container-padding: 80px;
+    @media (max-width: $breakpoint-mobile-xs) {
+      --container-padding: 30px;
+    }
+}

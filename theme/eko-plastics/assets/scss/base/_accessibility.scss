@@ -1,0 +1,79 @@
+/*
+ * Accessibility helpers
+ */
+
+/*
+ * Visually hide content while keeping it available
+ * to screen readers.
+ */
+.screen-reader-text {
+	position: absolute !important;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	white-space: nowrap;
+	word-wrap: normal !important;
+}
+
+/*
+ * Make hidden skip links visible when focused.
+ */
+.screen-reader-text:focus {
+	display: block;
+	top: 5px;
+	left: 5px;
+	z-index: 100000;
+	width: auto;
+	height: auto;
+	padding: 15px 23px 14px;
+	overflow: visible;
+	clip: auto !important;
+	clip-path: none;
+	border-radius: 3px;
+	background-color: #f1f1f1;
+	box-shadow: 0 0 2px 2px rgb(0 0 0 / 60%);
+	color: #21759b;
+	font-size: 0.875rem;
+	font-weight: 700;
+	line-height: normal;
+	text-decoration: none;
+	white-space: normal;
+}
+
+/*
+ * Do not show an additional outline on the skip-link target.
+ */
+#primary[tabindex="-1"]:focus {
+	outline: 0;
+}
+
+/*
+ * Preserve a visible keyboard focus indicator.
+ */
+:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 3px;
+}
+
+/*
+ * Reduce animations for users who request it.
+ */
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		scroll-behavior: auto !important;
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}

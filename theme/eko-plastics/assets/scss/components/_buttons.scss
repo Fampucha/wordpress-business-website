@@ -1,0 +1,41 @@
+@use '../abstracts/variables' as *;
+
+a.button {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 14px 24px;
+  border-radius: $radius-small;
+  background-color: $color-button-background !important;
+  color: $color-button-text !important;
+  font-family: inherit;
+  font-size: $font-size-small !important;
+  line-height: 1;
+  text-decoration: none !important;
+  box-shadow: $button-shadow; 
+  cursor: pointer;
+  transition:
+    transform $transition-default,
+    background-color $transition-default;
+
+  &:hover {
+    transform: translateY(-2px);
+    background-color: $color-button-background !important;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-text-primary;
+    outline-offset: 3px;
+  }
+}
+
+.gform_button {
+  width: 100% !important;
+  min-height: 62px !important;
+  font-size: $font-size-medium !important;
+
+  @media (max-width: $breakpoint-tablet) {
+    min-height: 71px !important;
+  }
+}

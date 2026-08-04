@@ -1,0 +1,135 @@
+/*
+ * Base typography
+ */
+
+@use '../abstracts/variables' as *;
+
+body,
+button,
+input,
+select,
+optgroup,
+textarea {
+	font-family: $font-family-primary;
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	color: $color-text-primary;
+}
+
+body {
+	background-color: $color-background;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+p,
+blockquote {
+	font: inherit;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+p {
+	margin: 0;
+}
+
+strong,
+b {
+	font-weight: 700;
+}
+
+em,
+i,
+dfn,
+cite {
+	font-style: italic;
+}
+
+small {
+	font-size: 0.875em;
+}
+
+sub,
+sup {
+	position: relative;
+	font-size: 0.75em;
+	line-height: 0;
+	vertical-align: baseline;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+sup {
+	top: -0.5em;
+}
+
+blockquote {
+	margin: 0;
+}
+
+address {
+	font-style: normal;
+}
+
+pre {
+	max-width: 100%;
+	overflow: auto;
+	padding: 1rem;
+	font-family: "Courier New", Courier, monospace;
+	font-size: 0.875rem;
+	line-height: 1.6;
+	white-space: pre-wrap;
+	background-color: #eee;
+}
+
+code,
+kbd,
+samp,
+tt,
+var {
+	font-family: "Courier New", Courier, monospace;
+}
+
+abbr[title],
+acronym {
+	text-decoration: underline dotted;
+	cursor: help;
+}
+
+mark,
+ins {
+	text-decoration: none;
+	background-color: #fff9c0;
+}
+
+a[href="#"] {
+	text-decoration: none;
+	transition: text-shadow $transition-default;
+
+	&:hover,
+	&:focus-visible {
+		text-decoration: none;
+		text-shadow:
+			0 1px 0 rgba(0, 0, 0, 0.12),
+			0 4px 12px rgba(0, 0, 0, 0.3);
+	}
+}
+
+hr {
+	height: 1px;
+	margin: 0;
+	border: 0;
+	background-color: #ccc;
+}

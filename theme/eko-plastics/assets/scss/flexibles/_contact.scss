@@ -1,0 +1,259 @@
+@use '../abstracts/variables' as *;
+
+.contact-section {
+  padding-block: 80px 55px;
+
+  @media (max-width: $breakpoint-tablet) {
+    padding-block: 28px 39px;
+  }
+
+  &__grid {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: start;
+    gap: 141px;
+
+    @media (max-width: $breakpoint-tablet) {
+      flex-direction: column-reverse;
+      gap: 38px;
+    }
+  }
+
+  &__heading {
+    margin-bottom: 32px;
+    @media (max-width: $breakpoint-tablet) {
+      text-align: center;
+    }
+  }
+
+  &__title {
+    font-size: $font-size-h1;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    font-weight: $font-weight-bold;
+
+    @media (max-width: $breakpoint-mobile-xs) {
+      font-size: $font-size-mobile;
+    }
+  }
+
+  &__subtitle {
+    margin: 24px 0 32px;
+    color: $color-text-secondary;
+    font-size: $font-size-subtitle;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+
+    @media (max-width: $breakpoint-tablet) and (min-width: $breakpoint-mobile-xs) {
+      margin: 30px 32px 36px 0;
+    }
+  }
+
+  &__media {
+    padding-right: 5px;
+
+    @media (max-width: $breakpoint-tablet) {
+      padding-right: 0;
+      margin-inline: auto;
+    }
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 508/657;
+    object-fit: cover;
+    border-radius: $radius-small;
+  }
+
+  &__content {
+    flex-grow: 1;
+
+    @media (max-width: $breakpoint-tablet) {
+      width: 100%;
+    }
+  }
+}
+
+
+.contact-section {
+  .gform_wrapper {
+    --gf-form-gap-y: 24px;
+    --gf-field-gap-y: 8px;
+    --gf-ctrl-border-color: #{$color-border-form};
+    --gf-ctrl-bg-color: #{$color-background};
+    --gf-ctrl-radius: #{$radius-small};
+    --gf-ctrl-shadow: none;
+    --gf-ctrl-shadow-focus: 0 0 0 3px rgb(0 0 0 / 8%);
+    --gf-ctrl-font-size: #{$font-size-small};
+    --gf-ctrl-label-font-size-primary: #{$font-size-small};
+    --gf-ctrl-label-font-weight-primary: #{$font-weight-medium};
+    --gf-ctrl-label-color-primary: #{$color-text-primary};
+    --gf-ctrl-placeholder-color: #{$color-text-secondary};
+    --gf-ctrl-btn-bg-color-primary: #{$color-button-background};
+    --gf-ctrl-btn-color-primary: #{$color-button-text};
+    --gf-ctrl-btn-border-color-primary: #{$color-button-background};
+    --gf-ctrl-btn-radius: #{$radius-small};
+
+    @media (max-width: $breakpoint-tablet) and (min-width: $breakpoint-mobile-xs) {
+      padding-inline: 46px 56px;
+    }
+  }
+
+  .gform_fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 32px !important;
+
+    @media (max-width: $breakpoint-tablet) {
+      grid-template-columns: repeat(1, 1fr)!important;
+    }
+  }
+
+  .gfield {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
+    @media (max-width: $breakpoint-tablet) {
+      grid-column: span 1 !important;
+
+      .gform-grid-row {
+        margin-inline: 0;
+      }
+
+      .gform-grid-col {
+        padding-inline: 0;
+      }
+    }
+  }
+
+  .gfield--width-half {
+    grid-column: span 1;
+  }
+
+  .gfield_label,
+  .gform-field-label {
+    margin: 0;
+    font-size: $font-size-small;
+    font-weight: $font-weight-medium;
+    line-height: 1.5 !important;
+  }
+
+  .ginput_complex,
+  .ginput_container {
+    width: 100%;
+  }
+
+  input:not([type="submit"]),
+  textarea {
+    width: 100%;
+    border: 1px solid $color-border-form;
+    border-radius: $radius-small;
+    background-color: $color-background;
+    font: inherit;
+    font-size: $font-size-small;
+    transition:
+      border-color $transition-default,
+      box-shadow $transition-default;
+
+    &:focus {
+      border-color: $color-text-secondary;
+      outline: none;
+      box-shadow: 0 0 0 3px rgb(0 0 0 / 8%);
+    }
+  }
+
+  input:not([type="submit"])::placeholder,
+  textarea::placeholder {
+    line-height: 1.5 !important;
+    font-size: $font-size-small !important;
+    color: $color-text-secondary;
+    font-weight: $font-weight-medium;
+    letter-spacing: 0.01em !important;
+  }
+
+  input:not([type="submit"]) {
+    min-height: 48px;
+    line-height: 1.5 !important;
+    padding: 11px 16px !important;
+    block-size: unset !important;
+  }
+
+  textarea {
+    max-height: 123px !important;
+    min-height: unset !important;
+    min-block-size: 123px;
+    padding: 12px 16px !important;
+    resize: vertical;
+
+    @media (max-width: $breakpoint-tablet) {
+      min-block-size: 162px !important;
+    }
+  }
+
+  .gform-footer {
+    margin-top: 24px;
+    padding: 0;
+  }
+
+  .gform_button {
+    width: 100%;
+  }
+}
+
+/* Old static form styles kept for fallback markup. */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    label {
+      font-size: $font-size-small;
+      font-weight: $font-weight-medium;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid $color-border-form;
+      border-radius: $radius-small;
+      background-color: $color-background;
+      font: inherit;
+      font-size: $font-size-small;
+      transition:
+        border-color $transition-default,
+        box-shadow $transition-default;
+
+      &:focus {
+        border-color: $color-text-secondary;
+        outline: none;
+        box-shadow: 0 0 0 3px rgb(0 0 0 / 8%);
+      }
+    }
+
+    input {
+      min-height: 48px;
+      padding: 10px 16px;
+    }
+
+    textarea {
+      height: 123px;
+      padding: 12px;
+      resize: vertical;
+    }
+  }
+}

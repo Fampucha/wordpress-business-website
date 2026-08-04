@@ -1,0 +1,8 @@
+@use '../abstracts/variables' as *;
+
+.container {
+  width: 100%;
+  max-width: calc(#{$container-max-width} + var(--container-padding));
+  padding-inline: var(--container-padding);
+  margin: 0 auto;
+}

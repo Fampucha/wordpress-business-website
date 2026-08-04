@@ -1,0 +1,183 @@
+/*
+ * Native WordPress content classes
+ */
+
+/* Custom logo */
+
+.custom-logo-link {
+	display: inline-block;
+}
+
+.custom-logo {
+	display: block;
+	width: auto;
+	height: auto;
+}
+
+/* Posts and pages */
+
+.sticky {
+	display: block;
+}
+
+.updated:not(.published) {
+	display: none;
+}
+
+.page-links {
+	clear: both;
+}
+
+/* Comments */
+
+.comment-content a {
+	overflow-wrap: break-word;
+	word-wrap: break-word;
+}
+
+.bypostauthor {
+	display: block;
+}
+
+/* Embedded media */
+
+.wp-smiley {
+	display: inline;
+	width: auto;
+	max-height: 1em;
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+/* WordPress captions */
+
+.wp-caption {
+	max-width: 100%;
+}
+
+.wp-caption img[class*="wp-image-"] {
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.wp-caption-text {
+	text-align: center;
+}
+
+/* WordPress galleries */
+
+.gallery {
+	display: grid;
+	gap: 1.5rem;
+}
+
+.gallery-item {
+	width: 100%;
+	text-align: center;
+}
+
+.gallery-columns-2 {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.gallery-columns-3 {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.gallery-columns-4 {
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.gallery-columns-5 {
+	grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.gallery-columns-6 {
+	grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.gallery-columns-7 {
+	grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.gallery-columns-8 {
+	grid-template-columns: repeat(8, minmax(0, 1fr));
+}
+
+.gallery-columns-9 {
+	grid-template-columns: repeat(9, minmax(0, 1fr));
+}
+
+.gallery-caption {
+	display: block;
+}
+
+/* WordPress image alignment */
+
+.alignleft {
+	float: left;
+	margin-right: 1.5rem;
+	margin-bottom: 1.5rem;
+}
+
+.alignright {
+	float: right;
+	margin-bottom: 1.5rem;
+	margin-left: 1.5rem;
+}
+
+.aligncenter {
+	display: block;
+	clear: both;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+/* Responsive media */
+
+figure,
+.wp-block-image {
+	max-width: 100%;
+}
+
+iframe,
+embed,
+object {
+	max-width: 100%;
+}
+
+/* Clear floated WordPress content */
+
+.entry-content::after,
+.comment-content::after {
+	display: table;
+	clear: both;
+	content: "";
+}
+
+/* Prevent wide editor content from causing overflow */
+
+.entry-content,
+.comment-content {
+	overflow-wrap: break-word;
+}
+
+@media (max-width: 767px) {
+	.alignleft,
+	.alignright {
+		float: none;
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	.gallery-columns-4,
+	.gallery-columns-5,
+	.gallery-columns-6,
+	.gallery-columns-7,
+	.gallery-columns-8,
+	.gallery-columns-9 {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}

@@ -1,0 +1,53 @@
+@use '../abstracts/variables' as *;
+
+.testimonial-card {
+  min-width: 0;
+  padding: 32px;
+  border: 1px solid $color-border-card;
+  border-radius: $radius-large;
+  background-color: $color-background;
+  box-shadow: $shadow-card;
+  transition:
+    transform $transition-default,
+    box-shadow $transition-default;
+
+  &:hover {
+    transform: scale(1.025);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    padding-bottom: 25px;
+  }
+
+  &__quote {
+    padding-bottom: 48px;
+    font-size: $font-size-medium;
+    font-weight: $font-weight-medium;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+
+  &__author {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__avatar {
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+  }
+
+  &__name,
+  &__description {
+    font-size: $font-size-small;
+    font-weight: $font-weight-medium;
+  }
+
+  &__description {
+    margin-top: 2px;
+    color: $color-text-secondary;
+  }
+}
