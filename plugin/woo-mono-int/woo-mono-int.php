@@ -3,7 +3,7 @@
  * Plugin Name: Woo Mono Int
  * Description: Test monobank acquiring payment gateway for WooCommerce.
  * Version: 1.0.0
- * Author: Eko Plastics
+ * Author: Business Website
  * Text Domain: woo-mono-int
  * Requires Plugins: woocommerce
  * Requires at least: 6.0

@@ -1,0 +1,24 @@
+{
+  "name": "business-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Custom responsive WordPress theme for a corporate website.",
+  "author": "Nastia Klochko",
+  "license": "GPL-2.0-or-later",
+  "keywords": [
+    "WordPress",
+    "Theme"
+  ],
+  "devDependencies": {
+    "@wordpress/scripts": "^19.2.2",
+    "dir-archiver": "^1.1.1",
+    "sass": "^1.102.0"
+  },
+  "scripts": {
+    "watch": "sass --watch assets/scss/main.scss:assets/css/style.css --style=expanded --source-map",
+    "compile:css": "sass assets/scss/main.scss assets/css/style.css --style=expanded --source-map",
+    "lint:scss": "wp-scripts lint-style 'assets/scss/**/*.scss'",
+    "lint:js": "wp-scripts lint-js 'js/*.js'",
+    "bundle": "dir-archiver --src . --dest ../business-website.zip --exclude .DS_Store .stylelintrc.json .eslintrc .git .gitattributes .github .gitignore README.md composer.json composer.lock node_modules vendor package-lock.json package.json .travis.yml phpcs.xml.dist sass style.css.map yarn.lock"
+  }
+}

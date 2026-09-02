@@ -1,253 +1,155 @@
-# Eko Plastics Test Task
+# WordPress Business Website
 
-WordPress/WooCommerce test task implementation for the Eko Plastics demo site.
+A custom responsive WordPress/WooCommerce website developed from a provided Figma design.
 
-Demo URL is provided separately with the GitHub repository link.
+The project demonstrates custom WordPress theme development, flexible content management with ACF, third-party CRM integrations, form validation and spam protection, as well as development of a custom WooCommerce payment gateway.
 
 ## Demo
 
-URL: [https://emanon-sandbox.ct.ws/](https://emanon-sandbox.ct.ws/)
+Live demo: https://emanon-sandbox.ct.ws/
 
-## Completed Tasks
+> Administrative access is not publicly available. Screenshots below demonstrate the WordPress admin functionality, integration settings, and plugin configuration.
 
-### 1. Frontend та CMS
+## Tech Stack
+
+* WordPress
+* WooCommerce
+* PHP
+* JavaScript
+* SCSS / CSS
+* Advanced Custom Fields Pro
+* Gravity Forms
+* REST API
+* SalesDrive API
+* Dilovod API
+* monobank Acquiring API
+
+## Custom WordPress Theme
 
 URLs: [Home](https://emanon-sandbox.ct.ws/) + [Contact](https://emanon-sandbox.ct.ws/contact/)
 
-Implemented a custom WordPress theme based on the provided Figma layout.
+A custom WordPress theme was developed based on a provided Figma layout.
 
-What was done:
+### Features
 
-- Pixel-focused page layout with the Inter font.
-- Responsive header and footer.
-- Mobile burger menu with open/close animation.
-- Hover scaling for cards.
-- Hover effect for placeholder links with text `Page`: smooth text shadow without underline.
-- Flexible content template using ACF Flexible Content.
-- Flexible section templates are loaded from:
+* Responsive page layout
+* Custom responsive header and footer
+* Mobile navigation with open/close animation
+* Interactive hover effects
+* Flexible page building using ACF Flexible Content
+* Reusable section templates
+* Custom page templates
+* Responsive implementation based on the original design
 
-```text
-wp-content/themes/eko-plastics/template-parts/flexible/
-```
+Flexible sections are stored in:
 
-The main flexible page template is:
+`theme/business-website/template-parts/flexible/`
 
-```text
-wp-content/themes/eko-plastics/templates/template-flexible.php
-```
+The main flexible page template:
 
-### 3. API and system integration
+`theme/business-website/templates/template-flexible.php`
 
-URLs: [Form](https://emanon-sandbox.ct.ws/form-test/) + [Settings](https://emanon-sandbox.ct.ws/wp-admin/options-general.php?page=eko-plastics-crm-integrations)
+## Form Validation and CRM Integration
 
-Implemented a separate validation form page template with CRM integrations.
+A custom form was implemented with client-side and server-side validation.
 
-Form template:
+### Validation
 
-```text
-wp-content/themes/eko-plastics/templates/template-validation-form.php
-```
+* Name validation
+* Ukrainian phone number validation and normalization
+* Client-side phone mask
 
-Frontend phone mask:
+### Spam Protection
 
-```text
-wp-content/themes/eko-plastics/assets/js/validation-form.js
-```
+* WordPress nonce verification
+* Hidden honeypot field
+* Minimum form submission time validation
+* IP-based rate limiting using WordPress transients
 
-CRM integration code:
+### CRM Integration
 
-```text
-wp-content/themes/eko-plastics/inc/crm-integrations.php
-```
+Submitted form data can be sent to external CRM services.
 
-What was done:
+Implemented integrations include:
 
-- Custom form with `Name` and `Phone` fields.
-- Server-side validation:
-  - name allows only letters, spaces, apostrophes, and hyphens;
-  - phone is normalized to `+380XXXXXXXXX`;
-  - phone validates Ukrainian mobile operator codes.
-- Client-side Ukrainian phone mask.
-- Spam protection without captcha:
-  - WordPress nonce;
-  - hidden honeypot field;
-  - minimum submit time;
-  - simple IP-based rate limit.
-- Data is sent to SalesDrive and creates a lead/order.
-- Contact data is sent further to Dilovod as a client in the selected client category.
-- SalesDrive webhook endpoint is available through WordPress REST API.
-- Telegram alerts are sent when SalesDrive or Dilovod API fails during integration requests.
-- Additional WP-Cron health check checks CRM API availability every 15 minutes and sends Telegram alerts when an API stops responding.
+* SalesDrive
+* Dilovod
+* WordPress REST API webhook handling
+* Telegram notifications when external API requests fail
+* WP-Cron API availability checks
 
-Admin settings page:
+CRM integration logic:
 
-```text
-Settings > CRM Integrations
-```
+`theme/business-website/inc/crm-integrations.php`
 
-### 4. CMS module / WooCommerce Plugin
+### CRM Integration Screenshots
 
-URLs: [Checkout](https://emanon-sandbox.ct.ws/checkout/) + [Settings](https://emanon-sandbox.ct.ws/wp-admin/admin.php?page=wc-settings&tab=checkout&section=woo_mono_int&from=WCADMIN_PAYMENT_SETTINGS)
+The screenshots below demonstrate the frontend form and the WordPress admin settings used to configure CRM data transfer.
 
-Implemented a custom WooCommerce payment gateway plugin for monobank acquiring.
+#### Contact Form
 
-Plugin path:
+![Contact form](readme-assets/contact-form.jpg)
 
-```text
-wp-content/plugins/woo-mono-int/
-```
+#### CRM Integration Settings
 
-What was done:
+![CRM integration settings](readme-assets/crm-settings.jpg)
 
-- Custom WooCommerce payment method: `monobank`.
-- Payment gateway settings page in WooCommerce.
-- Merchant token validation.
-- Gateway availability validation:
-  - payment method must be enabled;
-  - merchant token must be set;
-  - order currency must be UAH.
-- monobank invoice creation through API.
-- Customer redirect to monobank payment page.
-- Invoice/payment data saved in WooCommerce order meta.
-- Webhook endpoint for monobank callbacks.
-- Webhook signature verification with monobank public key.
-- Optional WooCommerce logging.
-- Sanitization and escaping in settings, output, requests, and order meta.
-- WooCommerce core and WordPress core were not modified.
+> Login credentials and WordPress admin access are intentionally not published to prevent unauthorized changes to the demo website.
 
-Plugin installation:
+## Custom WooCommerce Payment Gateway
 
-```text
-wp-content/plugins/woo-mono-int/
-```
+The project also includes a custom WooCommerce payment gateway plugin for monobank acquiring.
 
-After copying the plugin folder, activate it in:
+Plugin source:
 
-```text
-Plugins > Woo Mono Int
-```
+`plugin/woo-mono-int/`
 
-Then open:
+### Features
 
-```text
-WooCommerce > Settings > Payments > monobank acquiring
-```
+* Custom WooCommerce payment method
+* WooCommerce payment settings
+* Merchant token validation
+* UAH currency validation
+* Invoice creation through the monobank API
+* Redirect to the monobank payment page
+* WooCommerce order metadata
+* monobank webhook handling
+* Webhook signature verification
+* WooCommerce logging
+* WordPress sanitization and escaping practices
 
-Plugin settings:
+WordPress and WooCommerce core files are not modified.
 
-- Enable/disable payment method.
-- Test mode.
-- Merchant token.
-- Invoice validity.
-- Webhook signature verification.
-- Debug log.
+### Plugin Screenshots
 
-Test mode:
+The screenshots below demonstrate the installed payment gateway, its appearance during checkout, and the WooCommerce configuration page.
 
-- The plugin uses monobank acquiring API endpoint:
+#### Payment Method in Checkout
 
-```text
-https://api.monobank.ua/api/merchant/invoice/create
-```
+![Payment method in checkout](readme-assets/payment-checkout.jpg)
 
-- For testing, use a monobank test token from:
+#### Payment Gateway Settings
 
-```text
-https://api.monobank.ua/
-```
+![Payment gateway settings](readme-assets/payment-settings.jpg)
 
-Webhook:
+### Download Plugin
 
-- The webhook URL is shown in the gateway settings.
-- It looks like:
+A packaged version of the custom WooCommerce payment gateway plugin is also available separately:
 
-```text
-https://your-site.test/?wc-api=woo_mono_int
-```
-
-- The plugin sends this URL to monobank as `webHookUrl`.
-- Webhook payloads are verified with the `X-Sign` header.
-- The monobank public key is fetched from `GET /api/merchant/pubkey` and cached in WordPress option `woo_mono_int_pubkey`.
-
-Order meta saved by the plugin:
-
-- `_woo_mono_int_invoice_id`
-- `_woo_mono_int_page_url`
-- `_woo_mono_int_invoice_status`
-- `_woo_mono_int_reference`
-- `_woo_mono_int_rrn`
-- `_woo_mono_int_approval_code`
-- `_woo_mono_int_modified_date`
-
-Logs:
-
-- Enable `Debug log` in the gateway settings.
-- Logs are available in:
-
-```text
-WooCommerce > Status > Logs
-```
-
-- Log source: `woo-mono-int`.
+[Download WooCommerce monobank integration plugin](https://drive.google.com/file/d/1q9mc6CLsBEyehPXNMXwR8WAMY7FvdHwr/view?usp=sharing)
 
 ## Requirements
 
-- WordPress 6.0+
-- PHP 7.4+
-- WooCommerce
-- Advanced Custom Fields Pro
-- Gravity Forms
-- SalesDrive test account
-- Dilovod test account
-- Telegram bot for API failure alerts
-- monobank test token for WooCommerce payment testing
+* WordPress 6.0+
+* PHP 7.4+
+* WooCommerce
+* Advanced Custom Fields Pro
+* Gravity Forms
 
-### Recommended Deployment Flow
+External integrations require corresponding API credentials.
 
-1. Install a clean WordPress instance on the target hosting or local server.
+## Security
 
-2. Install and activate the All-in-One WP Migration plugin.
+API keys, passwords and external service credentials are not stored in this repository.
 
-3. Import the provided backup file:
-
-[Download backup](https://drive.google.com/file/d/1yqIYzsfueyNc3Ca5D-sc-o6-MZmLjl5n/view?usp=drive_link)
-
-```text
-All-in-One WP Migration > Import
-```
-
-4. After the import is complete, log in to WordPress admin with the provided credentials.
-
-5. Check that the custom theme is active:
-
-```text
-Appearance > Themes > Eko Plastics
-```
-
-6. Upload and activate the WooCommerce payment plugin archive:
-
-[Download archive](https://drive.google.com/file/d/1q9mc6CLsBEyehPXNMXwR8WAMY7FvdHwr/view?usp=sharing)
-
-```text
-Plugins > Add New > Upload Plugin > woo-mono-int.zip
-```
-
-7. Check that the required plugins are active:
-
-- WooCommerce
-- Advanced Custom Fields Pro
-- Gravity Forms
-- Woo Mono Int
-
-8. Re-save permalinks after migration:
-
-```text
-Settings > Permalinks > Save Changes
-```
-
-### Important Notes
-
-- API keys, passwords, and CRM account access are not stored in the GitHub repository.
-- Access to the SalesDrive and Dilovod test accounts is provided separately for review.
-- The demo site is hosted on InfinityFree free hosting. This hosting may block server-to-server webhooks with an anti-bot JavaScript challenge and may restrict outgoing requests to Telegram API.
-- For full webhook and Telegram testing, use hosting that allows external POST requests to WordPress REST API and outgoing HTTPS requests to `api.telegram.org`.
+WordPress administrator credentials and website backups are intentionally not publicly shared. Administrative functionality is demonstrated through screenshots instead.
